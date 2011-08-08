@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Truth Or Dare</string>
+    
+    <string name="play">晃动手机开始！</string>
+    
+    <string name="checkbox_dirty_text">重口味，慎入</string>
+    <string name="checkbox_dare_text">大冒险</string>
+    <string name="checkbox_question_text">真心话</string>
+</resources>
