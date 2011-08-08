@@ -2,6 +2,8 @@ package com.Moco;
 
 import com.Moco.R;
 import com.Moco.data.DAOSQLiteHelper;
+import com.mobclick.android.MobclickAgent;
+import com.mobclick.android.ReportPolicy;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,7 +29,9 @@ public class MocoTruthOrDare extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-                
+
+        MobclickAgent.setDefaultReportPolicy(this, ReportPolicy.REALTIME);
+        
         setContentView(R.layout.main);
         initControls();
         
@@ -108,5 +112,17 @@ public class MocoTruthOrDare extends Activity {
             e.printStackTrace();
         }
         // }
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    
+    @Override
+    public void onPause() { 
+        super.onPause(); 
+        MobclickAgent.onPause(this); 
     }
 }
