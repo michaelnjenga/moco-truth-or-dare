@@ -142,7 +142,7 @@ public class MocoTruthOrDare extends Activity {
             Intent intent = new Intent();
             intent.setClass(MocoTruthOrDare.this, Play.class);
             startActivity(intent);
-            finish();
+            //finish();
         }
     }
 }
