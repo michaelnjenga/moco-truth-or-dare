@@ -12,18 +12,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MocoTruthOrDare extends Activity {
 
 	private String WEIBO_URL = "http://t.sina.com.cn/mocovenwitch";
+	private final long SPLASH_TIME = 3000L;
 	
     /** Called when the activity is first created. */
     @Override
@@ -32,24 +37,29 @@ public class MocoTruthOrDare extends Activity {
 
         MobclickAgent.setDefaultReportPolicy(this, ReportPolicy.REALTIME);
         
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         initControls();
         
         copyDatabase();
+        
+        //start timer
+        Timer t = new Timer();
+        t.schedule(new Task(), SPLASH_TIME);
     }
     
     //initialize the controls
     public void initControls(){
     	
     	//set listener to play button
-    	OnClickListener listener = new Button.OnClickListener(){
-		     @Override
-		     public void onClick(View v) {
-		    	 play();
-		    	 finish();
-		     }
-		};
-		findViewById(R.id.btnPlay).setOnClickListener(listener);
+//    	OnClickListener listener = new Button.OnClickListener(){
+//		     @Override
+//		     public void onClick(View v) {
+//		    	 play();
+//		    	 finish();
+//		     }
+//		};
+//		findViewById(R.id.btnPlay).setOnClickListener(listener);
     	
 		//set listener to Weibo button
     	OnClickListener lsnWeibo = new ImageView.OnClickListener(){
@@ -90,28 +100,28 @@ public class MocoTruthOrDare extends Activity {
         final String file_name = "mocotod.db3";
 
         // if file is not exist, copy it
-        // File f = new File(file_path, file_name);
-        // if (!f.exists()) {
-        Log.d("T", "copy database from assets to package");
-
-        try {
-            InputStream myInput = getAssets().open(file_name);
-            OutputStream myOutput = new FileOutputStream(file_path + file_name);
-
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = myInput.read(buffer)) > 0) {
-                myOutput.write(buffer, 0, length);
+         File f = new File(file_path, file_name);
+         if (!f.exists()) {
+            Log.d("T", "copy database from assets to package");
+    
+            try {
+                InputStream myInput = getAssets().open(file_name);
+                OutputStream myOutput = new FileOutputStream(file_path + file_name);
+    
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = myInput.read(buffer)) > 0) {
+                    myOutput.write(buffer, 0, length);
+                }
+    
+                myOutput.flush();
+                myOutput.close();
+                myInput.close();
+    
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            myOutput.flush();
-            myOutput.close();
-            myInput.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // }
+         }
     }
     
     @Override
@@ -124,5 +134,15 @@ public class MocoTruthOrDare extends Activity {
     public void onPause() { 
         super.onPause(); 
         MobclickAgent.onPause(this); 
+    }
+
+    class Task extends TimerTask {
+        @Override
+        public void run() {
+            Intent intent = new Intent();
+            intent.setClass(MocoTruthOrDare.this, Play.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this is titlebar style -->
+<resources>
+    <style name="CustomizedWindowTitleBackgroundColor">
+           <item name="android:background">#BC8B46</item>
+    </style>
+    <style name="titlebarstyle" parent ="android:Theme">
+        <item name="android:windowTitleSize">42px</item>
+        <item name="android:windowTitleBackgroundStyle">@style/CustomizedWindowTitleBackgroundColor</item>
+    </style>
+</resources>

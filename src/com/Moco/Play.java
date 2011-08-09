@@ -5,6 +5,7 @@ import com.Moco.ShakeSensor.OnShakeListener;
 import com.Moco.data.Question;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -60,10 +61,11 @@ public class Play extends Activity{
 	 /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        
+        super.onCreate(savedInstanceState);        
+        //set title
+        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.play);
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlebar);
 
         initControls();
 		initSensor();
@@ -117,7 +119,19 @@ public class Play extends Activity{
             }
         };
         ((LinearLayout) findViewById(R.id.question_frame)).setOnClickListener(test);
-        
+       
+        //set about button
+        OnClickListener addListener = new ImageView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //test about
+                Intent intent = new Intent();
+                intent.setClass(Play.this, About.class);
+                startActivity(intent);
+            }
+       };
+       findViewById(R.id.add_item).setOnClickListener(addListener);
+       
         //vibrator
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);  
 
