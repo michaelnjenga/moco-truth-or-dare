@@ -6,7 +6,7 @@ import android.util.Log;
  */
 public class Logger {
     /** Turn on the log when it's true. */
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     /**
      * Instantiates a new log util.

@@ -2,6 +2,7 @@ package com.Moco.data;
 
 import static android.provider.BaseColumns._ID;
 
+import com.Moco.MocoTruthOrDare;
 import com.Moco.Utility.Logger;
 
 import android.content.ContentValues;
@@ -20,7 +21,6 @@ public class QuestionDao extends DAOSQLiteHelper {
     public QuestionDao(Context context) {
         super(context);
         this.mContext = context;
-
     }
     /**
      * Insert.
@@ -70,6 +70,7 @@ public class QuestionDao extends DAOSQLiteHelper {
 
         try {
             SQLiteDatabase db = getReadableDatabase();
+  
             cursor = db.query(ITEM_TABLE_NAME, ITEM_ALL_COLUMS, "item_type = " + type +" AND item_dirty = " + dirty, null, null, null, null);
             while (cursor.moveToNext()) {
                 questions.add(createMeetingFromCursorData(cursor));

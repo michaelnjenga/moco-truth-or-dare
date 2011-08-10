@@ -29,6 +29,7 @@ public class MocoTruthOrDare extends Activity {
 
 	private String WEIBO_URL = "http://t.sina.com.cn/mocovenwitch";
 	private final long SPLASH_TIME = 3000L;
+	public static DAOSQLiteHelper mDAOSQLiteHelper;
 	
     /** Called when the activity is first created. */
     @Override
@@ -90,11 +91,17 @@ public class MocoTruthOrDare extends Activity {
     	
     }
 
+    private void getDAOSQLiteHelper() {
+        mDAOSQLiteHelper = new DAOSQLiteHelper(MocoTruthOrDare.this);
+
+    }
+    
     public void copyDatabase() {
 
-        SQLiteDatabase db = (new DAOSQLiteHelper(MocoTruthOrDare.this))
-              .getReadableDatabase();
-        db.close();
+//        SQLiteDatabase db = (new DAOSQLiteHelper(MocoTruthOrDare.this))
+//              .getReadableDatabase();
+//        db.close();
+        getDAOSQLiteHelper();
 
         final String file_path = "//data//data//com.Moco//databases//";
         final String file_name = "mocotod.db3";
@@ -142,7 +149,7 @@ public class MocoTruthOrDare extends Activity {
             Intent intent = new Intent();
             intent.setClass(MocoTruthOrDare.this, Play.class);
             startActivity(intent);
-            //finish();
+            finish();
         }
     }
 }

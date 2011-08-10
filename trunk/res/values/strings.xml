@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
     <string name="app_name">真心话大冒险</string>
+    <string name="splash_text">夜猫友情提示：说谎会长胖哦……</string>
     
-    <string name="splash_text">夜猫友情提示：撒谎会长胖哦……</string>
-    
+    <!-- play page -->
     <string name="play">晃动手机开始！</string>
-    
     <string name="checkbox_dirty_text">重口味，慎入</string>
     <string name="checkbox_dare_text">大冒险</string>
     <string name="checkbox_question_text">真心话</string>
@@ -13,10 +13,9 @@
     
     <!-- about page -->
     <string name="about_titlebar_text">关于</string>
-    <string name="about_text_version">快递来了Android版 版本1.0</string>
+    <string name="about_text_version">真心话大冒险Android版 版本1.0</string>
     <string name="about_text_site">夜猫官网:http://www.9tcat.com</string>
     <string name="about_text_copyright">9tcat夜猫 版权所有</string>
     <string name="about_text_copyright_detail">Copyright © 2011 9tcat夜猫 All Rights Reserved</string>
-    
     
 </resources>
