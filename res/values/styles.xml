@@ -2,7 +2,7 @@
 <!-- this is titlebar style -->
 <resources>
     <style name="CustomizedWindowTitleBackgroundColor">
-           <item name="android:background">#BC8B46</item>
+           <item name="android:background">@drawable/bg_title</item>
     </style>
     <style name="titlebarstyle" parent ="android:Theme">
         <item name="android:windowTitleSize">42px</item>

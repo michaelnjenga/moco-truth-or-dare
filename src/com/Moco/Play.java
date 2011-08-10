@@ -51,6 +51,8 @@ public class Play extends Activity{
 	
 	private int mType;
 	
+	private boolean mbGet = true;
+	
 	private QuestionProvider mQuestionProvider;
 	
 	private List<Question> mQuestionList;
@@ -77,8 +79,8 @@ public class Play extends Activity{
         OnCheckedChangeListener lsnCheckDirty = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // TODO Auto-generated method stub
                 mDirty = NORMAL;
+                mbGet = true;
                 if(isChecked){
                     mDirty = DIRTY;
                 }
@@ -91,6 +93,7 @@ public class Play extends Activity{
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mDare = UNCHECKED;
+                mbGet = true;
                 if(isChecked){
                     mDare = CHECKED;
                 }
@@ -103,6 +106,7 @@ public class Play extends Activity{
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mQuestion = UNCHECKED;
+                mbGet = true;
                 if(isChecked){
                     mQuestion = CHECKED;
                 }
@@ -144,6 +148,8 @@ public class Play extends Activity{
     }
     
     public void getQuestions() {
+        if(!mbGet)return;
+        
         if (mDare == CHECKED && mQuestion == CHECKED) {
             mType = QUESTIONS_AND_DARES;
         } else {
@@ -154,12 +160,13 @@ public class Play extends Activity{
             }
         }
         mQuestionList = mQuestionProvider.getQuestions( mType, mDirty);
+        mbGet = false;
     }
     
     public boolean check() {
         if(mDare == UNCHECKED && mQuestion == UNCHECKED) {
 
-            Toast.makeText(getApplicationContext(), "’Ê–ƒª∞ªπ «¥Û√∞œ’£¨ƒ„÷¡…Ÿ—°“ª∏ˆ∞…£ø£°",
+            Toast.makeText(getApplicationContext(), "ÁúüÂøÉËØùËøòÊòØÂ§ßÂÜíÈô©ÔºüËá≥Â∞ëÈÄâ‰∏Ä‰∏™ÂêßÔºÅ",
                            Toast.LENGTH_SHORT).show();
             
             return false;
@@ -196,7 +203,7 @@ public class Play extends Activity{
         String text;
         text = mQuestionList.get(mLastNum).getItemContent();
         if(mQuestionList.get(mLastNum).getItemType() == 1) {
-            text = "°æ¥Û√∞œ’°ø" + text;
+            text = "[Â§ßÂÜíÈô©]" + text;
         }
         
         TextView tv = (TextView) findViewById(R.id.question);
@@ -213,19 +220,19 @@ public class Play extends Activity{
     @Override
     public void onPause() {
         super.onPause();
-        mShakeSensor.pause();
+        if(mShakeSensor != null)mShakeSensor.pause();
     }
     
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mShakeSensor.pause();
+        if(mShakeSensor != null)mShakeSensor.pause();
     }
     
     @Override
     public void onResume() {
         super.onResume();
-        mShakeSensor.resume();
+        if(mShakeSensor != null)mShakeSensor.resume();
     }
     
     public void onConfigurationChanged(Configuration newConfig) {
