@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class About.
  * @author Mocoven mocovenwitch@gmail.com
@@ -19,8 +20,12 @@ import android.widget.TextView;
  */
 public class About extends Activity {
 
+    /** The Constant SITE_URL. */
     private final static String SITE_URL = "http://www.9tcat.com"; 
 
+    /* (non-Javadoc)
+     * @see android.app.Activity#onCreate(android.os.Bundle)
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +38,11 @@ public class About extends Activity {
         initControls();
     }
 
+    /**
+     * Inits the controls.
+     */
     private void initControls() {
-        findViewById(R.id.add_item).setVisibility(View.GONE);
+        findViewById(R.id.button_about).setVisibility(View.GONE);
         
         TextView titlebarText = (TextView) findViewById(R.id.titlebar_text);
         titlebarText.setText(R.string.about_titlebar_text);
