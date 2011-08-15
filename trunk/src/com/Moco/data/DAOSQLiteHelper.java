@@ -6,6 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * The Class StopsSQLiteHelper.
@@ -41,8 +48,10 @@ public class DAOSQLiteHelper extends SQLiteOpenHelper {
      */
     public DAOSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        
     }
 
+    
     /*
      * (non-Javadoc)
      * 
@@ -84,4 +93,5 @@ public class DAOSQLiteHelper extends SQLiteOpenHelper {
             cursor.close();
         }
     }
+    
 }

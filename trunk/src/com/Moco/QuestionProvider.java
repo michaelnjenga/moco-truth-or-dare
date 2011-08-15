@@ -4,37 +4,48 @@ import com.Moco.data.Question;
 import com.Moco.data.QuestionDao;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class QuestionProvider.
+ */
 public class QuestionProvider {
 	
+    /** The Constant QUESTIONS_AND_DARES. */
     private static final int QUESTIONS_AND_DARES = 2;
     
+    /** The m context. */
     private Context mContext;
 	
+	/** The m type. */
 	private int mType;
     
+	/** The m dirty. */
 	private int mDirty;
 	
+	/** The m question list. */
 	private List<Question> mQuestionList;
 	
-	QuestionDao questionDao = null;
+	/** The question dao. */
+	QuestionDao questionDao;
 	
+	/**
+	 * Instantiates a new question provider.
+	 *
+	 * @param context the context
+	 */
 	public QuestionProvider(Context context){
 	    this.mContext = context;
-
-	    questionDao = new QuestionDao(mContext);
-        //getQuestions();
+        questionDao = new QuestionDao(mContext);
 	    
 	}
 	
+	/**
+	 * Gets the number.
+	 *
+	 * @return the number
+	 */
 	public int getNumber(){
 		int number;
 		number = (int)(Math.random()*mQuestionList.size());
@@ -42,10 +53,17 @@ public class QuestionProvider {
 		return number;
 	}
 
+	/**
+	 * Gets the questions.
+	 *
+	 * @param type the type
+	 * @param dirty the dirty
+	 * @return the questions
+	 */
 	public List<Question> getQuestions(int type, int dirty){
 	    this.mType = type;
         this.mDirty = dirty;
-	    
+
 	    if(mType == QUESTIONS_AND_DARES) {
 	        mQuestionList = questionDao.getQuestions(mDirty);
         } else {

@@ -13,20 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/bg_question"
-        android:layout_marginTop="20px">
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <TextView
             android:id="@+id/question"
-            android:textSize="38px"
+            android:textSize="38sp"
             android:textColor="#FFFFFF"
             android:text="@string/play"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
-            android:layout_marginLeft="20px"
-            android:layout_marginRight="20px"
-            android:layout_marginBottom="10px">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp">
         </TextView>
 
     </LinearLayout>

@@ -23,44 +23,69 @@ import android.widget.LinearLayout.LayoutParams;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Play.
+ */
 public class Play extends Activity{
 	
+    /** The Constant NORMAL. */
     private static final int NORMAL = 0;
     
+    /** The Constant DIRTY. */
     private static final int DIRTY = 1;
     
+    /** The Constant QUESTION. */
     private static final int QUESTION = 0;
     
+    /** The Constant DARE. */
     private static final int DARE = 1;
     
+    /** The Constant QUESTIONS_AND_DARES. */
     private static final int QUESTIONS_AND_DARES = 2;
     
+    /** The Constant CHECKED. */
     private static final int CHECKED = 1;
     
+    /** The Constant UNCHECKED. */
     private static final int UNCHECKED = 0;
     
+	/** The m shake sensor. */
 	private ShakeSensor mShakeSensor; 
 
+	/** The m last num. */
 	private int mLastNum;
 	
+	/** The m dare. */
 	private int mDare;
 	
+	/** The m question. */
 	private int mQuestion = CHECKED;
 	
+	/** The m dirty. */
 	private int mDirty;
 	
+	/** The m type. */
 	private int mType;
 	
+	/** The mb get. */
 	private boolean mbGet = true;
 	
+	/** The m question provider. */
 	private QuestionProvider mQuestionProvider;
 	
+	/** The m question list. */
 	private List<Question> mQuestionList;
 	
+	/** The vibrator. */
 	private Vibrator vibrator;
 	
 	
-	 /** Called when the activity is first created. */
+	 /**
+ 	 * Called when the activity is first created.
+ 	 *
+ 	 * @param savedInstanceState the saved instance state
+ 	 */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);        
@@ -74,6 +99,9 @@ public class Play extends Activity{
 		initQuestion();
     }
     
+    /**
+     * Inits the controls.
+     */
     public void initControls() {
       //set the dirty checkbox
         OnCheckedChangeListener lsnCheckDirty = new CompoundButton.OnCheckedChangeListener() {
@@ -134,19 +162,26 @@ public class Play extends Activity{
                 startActivity(intent);
             }
        };
-       findViewById(R.id.add_item).setOnClickListener(addListener);
+       findViewById(R.id.button_about).setOnClickListener(addListener);
        
         //vibrator
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);  
 
     }
 
+    /**
+     * Inits the question.
+     */
     public void initQuestion() {
-        
         mQuestionProvider = new QuestionProvider(this);
         
     }
     
+    /**
+     * Gets the questions.
+     *
+     * @return the questions
+     */
     public void getQuestions() {
         if(!mbGet)return;
         
@@ -159,10 +194,16 @@ public class Play extends Activity{
                 mType = QUESTION;
             }
         }
+
         mQuestionList = mQuestionProvider.getQuestions( mType, mDirty);
         mbGet = false;
     }
     
+    /**
+     * Check.
+     *
+     * @return true, if successful
+     */
     public boolean check() {
         if(mDare == UNCHECKED && mQuestion == UNCHECKED) {
 
@@ -175,6 +216,9 @@ public class Play extends Activity{
         return true;
     }
     
+    /**
+     * Inits the sensor.
+     */
     public void initSensor(){
     	
     	OnShakeListener lsn = new OnShakeListener(){
@@ -188,6 +232,9 @@ public class Play extends Activity{
 		mShakeSensor.setOnShakeListener(lsn);
     }
     
+    /**
+     * Display.
+     */
     public void display() {
         
         if(!check()) return;
@@ -217,24 +264,36 @@ public class Play extends Activity{
     }
     
     
+    /* (non-Javadoc)
+     * @see android.app.Activity#onPause()
+     */
     @Override
     public void onPause() {
         super.onPause();
         if(mShakeSensor != null)mShakeSensor.pause();
     }
     
+    /* (non-Javadoc)
+     * @see android.app.Activity#onDestroy()
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
         if(mShakeSensor != null)mShakeSensor.pause();
     }
     
+    /* (non-Javadoc)
+     * @see android.app.Activity#onResume()
+     */
     @Override
     public void onResume() {
         super.onResume();
         if(mShakeSensor != null)mShakeSensor.resume();
     }
     
+    /* (non-Javadoc)
+     * @see android.app.Activity#onConfigurationChanged(android.content.res.Configuration)
+     */
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         

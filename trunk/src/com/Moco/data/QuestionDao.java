@@ -2,7 +2,6 @@ package com.Moco.data;
 
 import static android.provider.BaseColumns._ID;
 
-import com.Moco.MocoTruthOrDare;
 import com.Moco.Utility.Logger;
 
 import android.content.ContentValues;
@@ -11,21 +10,33 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class QuestionDao.
+ */
 public class QuestionDao extends DAOSQLiteHelper {
-
-    private Context mContext;
-    
+    /**
+     * Instantiates a new question dao.
+     *
+     * @param context the context
+     */
     public QuestionDao(Context context) {
         super(context);
-        this.mContext = context;
+        
     }
+    
     /**
      * Insert.
      *
-     * @param Question the spot
+     * @param question the question
      * @return the spot
      */
     public Question insert(Question question) {
@@ -42,6 +53,7 @@ public class QuestionDao extends DAOSQLiteHelper {
     /**
      * Gets the spots.
      *
+     * @param dirty the dirty
      * @return the spots
      */
     public List<Question> getQuestions(int dirty) {
@@ -64,12 +76,19 @@ public class QuestionDao extends DAOSQLiteHelper {
         return questions;
     }
 
+    /**
+     * Gets the questions.
+     *
+     * @param type the type
+     * @param dirty the dirty
+     * @return the questions
+     */
     public List<Question> getQuestions(int type, int dirty) {
         List<Question> questions = new ArrayList<Question>();
         Cursor cursor = null;
 
         try {
-            SQLiteDatabase db = getReadableDatabase();
+            SQLiteDatabase db = getWritableDatabase();
   
             cursor = db.query(ITEM_TABLE_NAME, ITEM_ALL_COLUMS, "item_type = " + type +" AND item_dirty = " + dirty, null, null, null, null);
             while (cursor.moveToNext()) {
@@ -97,7 +116,7 @@ public class QuestionDao extends DAOSQLiteHelper {
     /**
      * Delete.
      *
-     * @param Question the spot
+     * @param question the question
      */
     public void delete(Question question) {
         Logger.d("MocoTruthOrDare - ", "delete Question " + question.getItemContent() + ".");
@@ -110,7 +129,7 @@ public class QuestionDao extends DAOSQLiteHelper {
     /**
      * Creates the new spot.
      *
-     * @param Question the spot
+     * @param question the question
      * @return the spot
      */
     private Question createNew(Question question) {
@@ -126,7 +145,7 @@ public class QuestionDao extends DAOSQLiteHelper {
     /**
      * Creates the content values.
      *
-     * @param Question the spot
+     * @param question the question
      * @return the content values
      */
     private ContentValues createContentValues(Question question) {
@@ -159,5 +178,4 @@ public class QuestionDao extends DAOSQLiteHelper {
                             itemSoundId, itemPictureId);
     }
     
-
 }
