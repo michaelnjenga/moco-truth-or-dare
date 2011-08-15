@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/bg_play">
 
     <LinearLayout
         android:id="@+id/question_frame"
@@ -12,22 +12,20 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/bg_question"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        >
 
         <TextView
             android:id="@+id/question"
             android:textSize="38sp"
-            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textColor="#111111"
             android:text="@string/play"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp">
         </TextView>
 
@@ -50,7 +48,7 @@
             android:layout_height="50px"
             android:layout_gravity="center_horizontal"
             android:textSize="22px"
-            android:textColor="#555555">
+            android:textColor="#EEEEEE">
         </CheckBox>
 
         <CheckBox
@@ -59,7 +57,7 @@
             android:layout_width="300px"
             android:layout_height="50px"
             android:textSize="22px"
-            android:textColor="#555555"
+            android:textColor="#EEEEEE"
             android:layout_gravity="center_horizontal">
         </CheckBox>
 
@@ -70,7 +68,7 @@
             android:layout_height="50px"
             android:textSize="22px"
             android:layout_gravity="center_horizontal"
-            android:textColor="#555555"
+            android:textColor="#EEEEEE"
             android:checked="true">
         </CheckBox>
     </LinearLayout>
