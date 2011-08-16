@@ -1,18 +1,20 @@
 package com.Moco.Utility;
 
+import android.graphics.Color;
+
 public class MyColorUtil {
 	
-	public static int[] getRGB(int fromColor, int endColor, int freq, int n) {
+	public static int[] getRGB(String fromColor, String endColor, int freq, int n) {
 		int[] rgb = new int[3];
 		
-		int r0 = fromColor>>16&0xff;
-		int r1 = endColor>>16&0xff;
+		int r0 = Color.red(Color.parseColor(fromColor));
+		int r1 = Color.red(Color.parseColor(endColor));
 		
-		int g0 = fromColor>>8&0xff;
-		int g1 = endColor>>8&0xff;
+		int g0 = Color.green(Color.parseColor(fromColor));
+		int g1 = Color.green(Color.parseColor(endColor));
 		
-		int b0 = fromColor&0xff;
-		int b1 = endColor&0xff;
+		int b0 = Color.blue(Color.parseColor(fromColor));
+		int b1 = Color.blue(Color.parseColor(endColor));
 
 		int f;
 		
