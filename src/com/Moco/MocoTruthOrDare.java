@@ -1,9 +1,11 @@
 package com.Moco;
 
-import com.Moco.R;
 import com.Moco.data.DAOSQLiteHelper;
 import com.mobclick.android.MobclickAgent;
 import com.mobclick.android.ReportPolicy;
+
+import net.youmi.android.AdManager;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -180,5 +181,13 @@ public class MocoTruthOrDare extends Activity {
       SQLiteDatabase db = (new DAOSQLiteHelper(MocoTruthOrDare.this)).getReadableDatabase();
       db.close();
     
+    }
+    
+    //id
+    //key
+    //request time
+    //test: true; release:false 
+    static{   
+        AdManager.init("05d3e6df75fafef3", "3d2c88da7538ecd3", 30,  false ); 
     }
 }

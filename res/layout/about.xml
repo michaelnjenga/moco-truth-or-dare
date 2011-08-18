@@ -7,17 +7,17 @@
     
     <!-- logo  -->
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80px"
+        android:layout_marginTop="50dp"
         android:id="@+id/rl_logo">
         
         <ImageView 
-		android:layout_width="280px" 
-        android:layout_height="280px"
+		android:layout_width="fill_parent" 
+        android:layout_height="67px"
         android:id="@+id/about_logo" 
-        android:background="@drawable/logoc" 
+        android:background="@drawable/logo_moco" 
         android:layout_alignParentTop="true"        
         android:layout_centerHorizontal="true"
         />

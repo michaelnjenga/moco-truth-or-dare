@@ -3,6 +3,10 @@ package com.Moco;
 import com.Moco.R;
 import com.Moco.ShakeSensor.OnShakeListener;
 import com.Moco.data.Question;
+import com.adview.AdViewLayout;
+import com.adview.AdViewTargeting;
+import com.adview.AdViewTargeting.RunMode;
+import com.adview.AdViewTargeting.UpdateMode;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,6 +20,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -97,6 +102,24 @@ public class Play extends Activity{
         initControls();
 		initSensor();
 		initQuestion();
+		
+		initAd();
+    }
+    
+    private void initAd() {
+        LinearLayout layout = (LinearLayout)findViewById(R.id.adLayout);
+        if (layout == null) 
+            return;
+        /*delete these two line when release*/
+//        AdViewTargeting.setUpdateMode(UpdateMode.EVERYTIME); 
+//        AdViewTargeting.setRunMode(RunMode.TEST);  
+        
+        AdViewLayout adViewLayout = new AdViewLayout(this, "SDK2011101800085100npnbvlcmo7knk");
+        RelativeLayout.LayoutParams adViewLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+        layout.addView(adViewLayout, adViewLayoutParams);
+        
+        layout.invalidate();
+       
     }
     
     /**
@@ -207,7 +230,7 @@ public class Play extends Activity{
     public boolean check() {
         if(mDare == UNCHECKED && mQuestion == UNCHECKED) {
 
-            Toast.makeText(getApplicationContext(), "真心话还是大冒险？至少选一个吧！",
+            Toast.makeText(getApplicationContext(), "真心话还是大冒险？至少�?�?��吧！",
                            Toast.LENGTH_SHORT).show();
             
             return false;
@@ -322,4 +345,5 @@ public class Play extends Activity{
         params.bottomMargin = bottomMargin;
         ((LinearLayout) findViewById(R.id.checkboxes_frame)).setLayoutParams(params);
     }
+    
 }
