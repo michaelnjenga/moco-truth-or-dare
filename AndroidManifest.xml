@@ -19,8 +19,35 @@
             android:name=".About"
             android:theme="@style/titlebarstyle">
         </activity>
+        
         <!-- umeng app key -->
-        <meta-data android:value="4e3fae8d431fe3730200005c" android:name="UMENG_APPKEY"></meta-data> 
+        <meta-data android:value="4e3fae8d431fe3730200005c" android:name="UMENG_APPKEY"></meta-data>
+        
+        <!-- AdView SDK for AdMob -->
+        <activity android:name="com.google.ads.AdActivity" 
+        android:configChanges="orientation|keyboard|keyboardHidden"/>
+    
+        <!-- AdView SDK for Youmi --> 
+        <activity android:name="net.youmi.android.AdActivity"
+                  android:configChanges="keyboard|keyboardHidden|orientation"/>
+        <!-- AdView SDK for Domob --> 
+        <activity android:name="cn.domob.android.ads.DomobActivity"
+                     android:theme =  "@android:style/Theme.Translucent" />
+        <!-- AdView SDK for Vpon -->
+        <activity android:name="com.vpon.adon.android.WebInApp" android:screenOrientation="portrait"
+                  android:configChanges="orientation|keyboardHidden|navigation|keyboard"/>
+        <!-- AdView SDK for AirAd -->       
+        <activity android:name="com.mt.airad.MultiAD"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:configChanges="orientation|keyboard|keyboardHidden"/> 
+                  
+        <!-- AdView SDK for millennialmedia -->
+        <activity android:name="com.millennialmedia.android.MMAdViewOverlayActivity" />
+        <activity android:name="com.millennialmedia.android.VideoPlayer"  />
+        
+        <!-- AdView SDK for Wooboo -->
+        <meta-data android:value="1" android:name="Market_ID"/>
+                   
     </application>
     
     <uses-sdk android:minSdkVersion="8" />
@@ -36,29 +63,5 @@
     <!-- youmi uses-permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission> 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    
-    <!-- AdView SDK for AdMob -->
-    <activity android:name="com.google.ads.AdActivity" 
-    android:configChanges="orientation|keyboard|keyboardHidden"/>
 
-    <!-- AdView SDK for millennialmedia -->
-    <activity android:name="com.millennialmedia.android.MMAdViewOverlayActivity" />
-    <activity android:name="com.millennialmedia.android.VideoPlayer"  />
-    
-    <!-- AdView SDK for Wooboo -->
-    <meta-data android:value="1" android:name="Market_ID"/>
-    
-    <!-- AdView SDK for Youmi --> 
-    <activity android:name="net.youmi.android.AdActivity"
-              android:configChanges="keyboard|keyboardHidden|orientation"/>
-    <!-- AdView SDK for Domob --> 
-    <activity android:name="cn.domob.android.ads.DomobActivity"
-                 android:theme =  "@android:style/Theme.Translucent" />
-    <!-- AdView SDK for Vpon -->
-    <activity android:name="com.vpon.adon.android.WebInApp" android:screenOrientation="portrait"
-              android:configChanges="orientation|keyboardHidden|navigation|keyboard"/>
-    <!-- AdView SDK for AirAd -->       
-    <activity android:name="com.mt.airad.MultiAD"
-              android:theme="@android:style/Theme.Translucent.NoTitleBar"
-              android:configChanges="orientation|keyboard|keyboardHidden"/> 
 </manifest>
