@@ -2,12 +2,11 @@
 <resources>
     
     <string name="app_name">真心话大冒险</string>
-    <string name="name">默考文s</string>
     <string name="splash_text">默考文提示：说谎会长胖哦……</string>
     
     <!-- play page -->
     <string name="play">晃动手机开始！</string>
-    <string name="checkbox_dirty_text">重口味，慎入</string>
+    <string name="checkbox_dirty_text">来点刺激的！</string>
     <string name="checkbox_dare_text">大冒险</string>
     <string name="checkbox_question_text">真心话</string>
     <string name="button_about">A</string>

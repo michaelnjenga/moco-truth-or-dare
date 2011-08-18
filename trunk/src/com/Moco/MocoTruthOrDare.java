@@ -4,9 +4,6 @@ import com.Moco.data.DAOSQLiteHelper;
 import com.mobclick.android.MobclickAgent;
 import com.mobclick.android.ReportPolicy;
 
-import net.youmi.android.AdManager;
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;

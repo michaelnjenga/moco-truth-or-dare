@@ -20,9 +20,8 @@
             android:id="@+id/question"
             android:textSize="38sp"
             android:textStyle="bold"
-            android:textColor="#111111"
+            android:textColor="#0077EC"
             android:text="@string/play"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -40,19 +39,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above = "@+id/adLayout"
-        android:layout_centerHorizontal="true"
-        
-        >
-
-        <CheckBox
-            android:text="@string/checkbox_dirty_text"
-            android:id="@+id/checkbox_dirty"
-            android:layout_width="300px"
-            android:layout_height="50px"
-            android:textSize="22px"
-            android:textColor="#EEEEEE"
-            >
-        </CheckBox>
+        android:layout_centerHorizontal="true">
 
         <CheckBox
             android:text="@string/checkbox_dare_text"
@@ -70,19 +57,26 @@
             android:layout_width="300px"
             android:layout_height="50px"
             android:textSize="22px"
-            
             android:textColor="#EEEEEE"
             android:checked="true">
         </CheckBox>
         
-       
+		<CheckBox
+		     android:text="@string/checkbox_dirty_text"
+		     android:id="@+id/checkbox_dirty"
+		     android:layout_width="300px"
+		     android:layout_height="50px"
+		     android:textSize="22px"
+		     android:textColor="#EEEEEE"
+		     >
+		 </CheckBox>
     </LinearLayout>
     
 
      <LinearLayout
             android:id="@+id/adLayout"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
         />
 </RelativeLayout>
