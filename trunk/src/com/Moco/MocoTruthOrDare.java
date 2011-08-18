@@ -183,11 +183,4 @@ public class MocoTruthOrDare extends Activity {
     
     }
     
-    //id
-    //key
-    //request time
-    //test: true; release:false 
-    static{   
-        AdManager.init("05d3e6df75fafef3", "3d2c88da7538ecd3", 30,  false ); 
-    }
 }
