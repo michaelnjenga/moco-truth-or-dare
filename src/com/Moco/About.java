@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class About extends Activity {
 
     /** The Constant SITE_URL. */
-    private final static String SITE_URL = "http://www.9tcat.com"; 
+    private final static String SITE_URL = "http://weibo.com/mocovenwitch"; 
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)

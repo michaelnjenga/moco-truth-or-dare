@@ -75,8 +75,7 @@ public class MocoTruthOrDare extends Activity {
 		     }
 		};
 		findViewById(R.id.imgLogo).setOnClickListener(lsnWeibo);
-		
-		
+
     }
     
     //goto play
