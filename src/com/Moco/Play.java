@@ -111,9 +111,9 @@ public class Play extends Activity{
         if (layout == null) 
             return;
         /*delete these two line when release*/
-        AdViewTargeting.setUpdateMode(UpdateMode.EVERYTIME); 
-        AdViewTargeting.setRunMode(RunMode.TEST);  
-        
+//        AdViewTargeting.setUpdateMode(UpdateMode.EVERYTIME); 
+//        AdViewTargeting.setRunMode(RunMode.TEST);  
+//        
         AdViewLayout adViewLayout = new AdViewLayout(this, "SDK2011101800085100npnbvlcmo7knk");
         RelativeLayout.LayoutParams adViewLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
         layout.addView(adViewLayout, adViewLayoutParams);
