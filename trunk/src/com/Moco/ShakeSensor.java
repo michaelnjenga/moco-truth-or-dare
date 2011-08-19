@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;   
 import android.hardware.SensorEventListener;   
 import android.hardware.SensorManager;   
+import android.widget.Toast;
   
 // TODO: Auto-generated Javadoc
 /**
@@ -51,6 +52,7 @@ public class ShakeSensor implements SensorEventListener {
     /** The m last force. */
     private long mLastForce;   
   
+    public boolean mSupportSensor = true;
     /**
      * The listener interface for receiving onShake events.
      * The class that is interested in processing a onShake
@@ -90,25 +92,38 @@ public class ShakeSensor implements SensorEventListener {
     public void setOnShakeListener(OnShakeListener listener) {   
          mShakeListener = listener;   
      }   
-  
+
     /**
      * Resume.
      */
     public void resume() {   
+        
+        if(!mSupportSensor)return;
+        
          mSensorMgr = (SensorManager) mContext   
                  .getSystemService(Context.SENSOR_SERVICE);   
+        
+         
         if (mSensorMgr == null) {   
-            throw new UnsupportedOperationException("Sensors not supported");   
-         }   
+//            throw new UnsupportedOperationException("Sensors not supported");
+
+            mSupportSensor = false;
+            return;
+//            
+        }   
            
         boolean supported = mSensorMgr.registerListener(this, mSensorMgr   
                  .getDefaultSensor(Sensor.TYPE_ACCELEROMETER),   
                  SensorManager.SENSOR_DELAY_UI);   
         if (!supported) {   
              mSensorMgr.unregisterListener(this);   
-            throw new UnsupportedOperationException(   
-                    "Accelerometer not supported");   
+//            throw new UnsupportedOperationException(   
+//                    "Accelerometer not supported");   
+             
+             mSupportSensor = false;
+             return;
          }   
+        
      }   
   
     /**

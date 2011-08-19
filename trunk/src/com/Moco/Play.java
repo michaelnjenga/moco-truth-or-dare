@@ -84,8 +84,7 @@ public class Play extends Activity{
 	
 	/** The vibrator. */
 	private Vibrator vibrator;
-	
-	
+
 	 /**
  	 * Called when the activity is first created.
  	 *
@@ -230,7 +229,7 @@ public class Play extends Activity{
     public boolean check() {
         if(mDare == UNCHECKED && mQuestion == UNCHECKED) {
 
-            Toast.makeText(getApplicationContext(), "真心话还是大冒险？至少�?�?��吧！",
+            Toast.makeText(getApplicationContext(), "真心话还是大冒险？至少选一个吧！",
                            Toast.LENGTH_SHORT).show();
             
             return false;
@@ -244,15 +243,24 @@ public class Play extends Activity{
      */
     public void initSensor(){
     	
-    	OnShakeListener lsn = new OnShakeListener(){
-			@Override
-			public void onShake() {
-			    display();
-			}
-		};
-    	
-		mShakeSensor = new ShakeSensor(this);
-		mShakeSensor.setOnShakeListener(lsn);
+        if(mShakeSensor==null) {
+        	OnShakeListener lsn = new OnShakeListener(){
+    			@Override
+    			public void onShake() {
+    			    display();
+    			}
+    		};
+        	
+    		mShakeSensor = new ShakeSensor(this);
+    		
+    		if(mShakeSensor.mSupportSensor) {
+    		    mShakeSensor.setOnShakeListener(lsn);
+    		} else {
+    		    Toast.makeText(getApplicationContext(), "您的手机不支持传感器！点击切换题目吧！",
+                             Toast.LENGTH_LONG).show();
+    		}
+    		
+        }
     }
     
     /**
@@ -283,7 +291,7 @@ public class Play extends Activity{
         tv.setAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in));
             
         long[] pattern = {800, 50, 400, 30, 800, 50, 400, 30};
-        vibrator.vibrate(pattern, -1);
+        if(vibrator!=null)vibrator.vibrate(pattern, -1);
     }
     
     
@@ -311,7 +319,7 @@ public class Play extends Activity{
     @Override
     public void onResume() {
         super.onResume();
-        if(mShakeSensor != null)mShakeSensor.resume();
+        if(mShakeSensor != null && mShakeSensor.mSupportSensor)mShakeSensor.resume();
     }
     
     /* (non-Javadoc)
