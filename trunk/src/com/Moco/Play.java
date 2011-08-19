@@ -345,13 +345,13 @@ public class Play extends Activity{
         LayoutParams params = new LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
                                                LinearLayout.LayoutParams.WRAP_CONTENT);
         params.topMargin = topMargin;
-        ((LinearLayout) findViewById(R.id.question_frame)).setLayoutParams(params);
+//        ((LinearLayout) findViewById(R.id.question_frame)).setLayoutParams(params);
         
         
         params = new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                                   LinearLayout.LayoutParams.MATCH_PARENT);
         params.bottomMargin = bottomMargin;
-        ((LinearLayout) findViewById(R.id.checkboxes_frame)).setLayoutParams(params);
+//        ((LinearLayout) findViewById(R.id.checkboxes_frame)).setLayoutParams(params);
     }
     
 }
