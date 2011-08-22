@@ -7,6 +7,8 @@ import com.adview.AdViewLayout;
 import com.adview.AdViewTargeting;
 import com.adview.AdViewTargeting.RunMode;
 import com.adview.AdViewTargeting.UpdateMode;
+import com.mobclick.android.MobclickAgent;
+import com.mobclick.android.ReportPolicy;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -92,7 +94,11 @@ public class Play extends Activity{
  	 */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);        
+        super.onCreate(savedInstanceState);      
+        
+        //umeng
+        MobclickAgent.setDefaultReportPolicy(this, ReportPolicy.REALTIME);
+        
         //set title
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.play);
@@ -302,6 +308,9 @@ public class Play extends Activity{
     public void onPause() {
         super.onPause();
         if(mShakeSensor != null)mShakeSensor.pause();
+        
+        //umeng
+        MobclickAgent.onPause(this);
     }
     
     /* (non-Javadoc)
@@ -320,6 +329,9 @@ public class Play extends Activity{
     public void onResume() {
         super.onResume();
         if(mShakeSensor != null && mShakeSensor.mSupportSensor)mShakeSensor.resume();
+        
+        //umeng
+        MobclickAgent.onResume(this);
     }
     
     /* (non-Javadoc)

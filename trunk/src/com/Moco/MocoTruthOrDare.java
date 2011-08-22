@@ -47,7 +47,7 @@ public class MocoTruthOrDare extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MobclickAgent.setDefaultReportPolicy(this, ReportPolicy.REALTIME);
+//        MobclickAgent.setDefaultReportPolicy(this, ReportPolicy.REALTIME);
         
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
@@ -105,7 +105,7 @@ public class MocoTruthOrDare extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
+//        MobclickAgent.onResume(this);
     }
     
     /* (non-Javadoc)
@@ -114,7 +114,7 @@ public class MocoTruthOrDare extends Activity {
     @Override
     public void onPause() { 
         super.onPause(); 
-        MobclickAgent.onPause(this); 
+//        MobclickAgent.onPause(this); 
     }
 
     /**
