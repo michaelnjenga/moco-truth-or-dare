@@ -31,16 +31,34 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/rl_version"
         android:layout_below="@+id/rl_logo">
+
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/version"
+                android:layout_centerInParent="true"
+                android:textSize="18sp"
+                android:textColor="#666666"
+                android:text="@string/about_text_version"/>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/rl_version"
+        android:layout_marginTop="50dp">
         
         <TextView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#666666"
-            android:text="@string/about_text_version"/>
-
+            android:text="@string/about_thanks"/>
+            
     </RelativeLayout>
-    
+        
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
