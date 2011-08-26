@@ -2,6 +2,7 @@ package com.Moco;
 
 import com.Moco.R;
 import com.Moco.ShakeSensor.OnShakeListener;
+import com.Moco.Utility.NetworkCheck;
 import com.Moco.data.Question;
 import com.adview.AdViewLayout;
 import com.adview.AdViewTargeting;
@@ -107,8 +108,7 @@ public class Play extends Activity{
         initControls();
 		initSensor();
 		initQuestion();
-		
-		initAd();
+
     }
     
     private void initAd() {
@@ -332,6 +332,11 @@ public class Play extends Activity{
         
         //umeng
         MobclickAgent.onResume(this);
+        
+        //ads
+        if(NetworkCheck.isNetworkAvailable(this)) {
+            initAd();
+        }
     }
     
     /* (non-Javadoc)
